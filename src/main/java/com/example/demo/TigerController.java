@@ -3,6 +3,8 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tigers")
 public class TigerController {
@@ -10,7 +12,7 @@ public class TigerController {
     private TigerService tigerService;
 
     @GetMapping
-    public Object getAllTigers() {
+    public List<tiger> getAllTigers() {
         return tigerService.getAllTigers();
     }
 
@@ -20,7 +22,7 @@ public class TigerController {
     }
 
     @GetMapping("/name")
-    public Object getTigersByName(@RequestParam String key) {
+    public List<tiger> getTigersByName(@RequestParam String key) {
         if (key != null) {
             return tigerService.getTigersByName(key);
         } else {
@@ -29,12 +31,12 @@ public class TigerController {
     }
 
     @GetMapping("/habitat/{region}")
-    public Object getTigersByHabitatRegion(@PathVariable String region) {
+    public List<tiger> getTigersByHabitatRegion(@PathVariable String region) {
         return tigerService.getTigersByHabitatRegion(region);
     }
 
     @GetMapping("/subspecies/{subspecies}")
-    public Object getTigersBySubspecies(@PathVariable String subspecies) {
+    public List<tiger> getTigersBySubspecies(@PathVariable String subspecies) {
         return tigerService.getTigersBySubspecies(subspecies);
     }
 

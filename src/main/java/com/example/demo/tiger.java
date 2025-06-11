@@ -22,19 +22,19 @@ public class tiger {
 
     }
 
-    public tiger(Long tigerId, String name, String description, String species, String habitatRegion) {
+    public tiger(Long tigerId, String name, String description, String subspecies, String habitatRegion) {
         this.tigerId = tigerId;
         this.name = name;
         this.description = description;
-        this.subspecies = species;
+        this.subspecies = subspecies;
         this.habitatRegion = habitatRegion;
     }
 
     // Constructor without ID
-    public tiger(String name, String description, String species, String habitatRegion) {
+    public tiger(String name, String description, String subspecies, String habitatRegion) {
         this.name = name;
         this.description = description;
-        this.subspecies = species;
+        this.subspecies = subspecies;
         this.habitatRegion = habitatRegion;
     }
 
@@ -63,11 +63,11 @@ public class tiger {
         this.description = description;
     }
 
-    public String getSubSpecies() {
+    public String getSubspecies() {
         return subspecies;
     }
 
-    public void setSubSpecies(String subSpecies) {
+    public void setSubspecies(String subspecies) {
         this.subspecies = subspecies;
     }
 
