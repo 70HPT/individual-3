@@ -1,3 +1,7 @@
+package com.example.demo;
+
+import com.example.demo.TigerRepository;
+import com.example.demo.tiger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,18 +51,18 @@ public class TigerService {
     public String writeJson(tiger tiger) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File("tiger.json"), tiger);
+            objectMapper.writeValue(new File("com.example.demo.tiger.json"), tiger);
             return "Tiger written to JSON file successfully";
         } catch (IOException e) {
             e.printStackTrace();
-            return "Error writing tiger to JSON file";
+            return "Error writing com.example.demo.tiger to JSON file";
         }
     }
 
     public Object readJson() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File("tiger.json"), tiger.class);
+            return objectMapper.readValue(new File("com.example.demo.tiger.json"), tiger.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

@@ -1,22 +1,25 @@
+package com.example.demo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/tigers")
 public class TigerController {
     @Autowired
     private TigerService tigerService;
 
-    @GetMapping("/tigers")
+    @GetMapping
     public Object getAllTigers() {
         return tigerService.getAllTigers();
     }
 
-    @GetMapping("/tigers/{id}")
+    @GetMapping("/{id}")
     public tiger getTigerById(@PathVariable long id) {
         return tigerService.getTigerById(id);
     }
 
-    @GetMapping("/tigers/name")
+    @GetMapping("/name")
     public Object getTigersByName(@RequestParam String key) {
         if (key != null) {
             return tigerService.getTigersByName(key);
@@ -25,39 +28,39 @@ public class TigerController {
         }
     }
 
-    @GetMapping("/tigers/habitat/{region}")
+    @GetMapping("/habitat/{region}")
     public Object getTigersByHabitatRegion(@PathVariable String region) {
         return tigerService.getTigersByHabitatRegion(region);
     }
 
-    @GetMapping("/tigers/subspecies/{subspecies}")
+    @GetMapping("/subspecies/{subspecies}")
     public Object getTigersBySubspecies(@PathVariable String subspecies) {
         return tigerService.getTigersBySubspecies(subspecies);
     }
 
-    @PostMapping("/tigers")
+    @PostMapping
     public Object addTiger(@RequestBody tiger tiger) {
         return tigerService.addTiger(tiger);
     }
 
-    @PutMapping("/tigers/{id}")
+    @PutMapping("/{id}")
     public tiger updateTiger(@PathVariable Long id, @RequestBody tiger tiger) {
         tigerService.updateTiger(id, tiger);
         return tigerService.getTigerById(id);
     }
 
-    @DeleteMapping("/tigers/{id}")
+    @DeleteMapping("/{id}")
     public Object deleteTiger(@PathVariable Long id) {
         tigerService.deleteTiger(id);
         return tigerService.getAllTigers();
     }
 
-    @PostMapping("/tigers/writeFile")
+    @PostMapping("/writeFile")
     public Object writeJson(@RequestBody tiger tiger) {
         return tigerService.writeJson(tiger);
     }
 
-    @GetMapping("/tigers/readFile")
+    @GetMapping("/readFile")
     public Object readJson() {
         return tigerService.readJson();
     }
